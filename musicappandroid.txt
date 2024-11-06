@@ -1,0 +1,209 @@
+1)activity_login.xml
+
+<!-- res/layout/activity_login.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/registerLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No account? Register now"
+        android:paddingTop="16dp"
+        android:textColor="@android:color/holo_blue_light" />
+</LinearLayout>
+
+2) activity_register.xml
+
+<!-- res/layout/activity_register.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register" />
+</LinearLayout>
+
+3)activity_home.xml
+
+<!-- res/layout/activity_home.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Home Screen"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/searchMusicButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Music" />
+</LinearLayout>
+
+4)activity_home.xml
+
+<!-- res/layout/activity_search.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/searchField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search for music" />
+
+    <TextView
+        android:id="@+id/searchResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search results will appear here"
+        android:padding="16dp"
+        android:textSize="18sp" />
+</LinearLayout>
+
+5) loginActivity.java
+// src/main/java/com/example/musicstreamingapp/LoginActivity.java
+package com.example.musicstreamingapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LoginActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        findViewById(R.id.loginButton).setOnClickListener(view -> {
+            // Redirect to Home Page after successful login
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        });
+
+        findViewById(R.id.registerLink).setOnClickListener(view -> {
+            // Redirect to Register Page
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
+    }
+}
+
+6)RegistreActivity.java
+
+// src/main/java/com/example/musicstreamingapp/RegisterActivity.java
+package com.example.musicstreamingapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RegisterActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        findViewById(R.id.registerButton).setOnClickListener(view -> {
+            // Redirect to Home Page after successful registration
+            startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+        });
+    }
+}
+
+7)HomeActivity.java
+// src/main/java/com/example/musicstreamingapp/HomeActivity.java
+package com.example.musicstreamingapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class HomeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        findViewById(R.id.searchMusicButton).setOnClickListener(view -> {
+            // Redirect to Search Page
+            startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+        });
+    }
+}
+
+8) SearchActivity.java
+// src/main/java/com/example/musicstreamingapp/SearchActivity.java
+package com.example.musicstreamingapp;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SearchActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+    }
+}
